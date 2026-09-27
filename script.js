@@ -191,7 +191,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
         switch(cmd) {
             case 'help':
-                appendTerminalLine('Available commands: skills, projects, contact, hire, clear, exit', 'text-neutral-400');
+                appendTerminalLine('Available commands: skills, projects, contact, hire, fastfetch, sudo, python, pacman, yay, cmd, terminal, vim, ls, cd, git, npm, docker, rm, coffee, clear, exit', 'text-neutral-400');
+                break;
+            case 'fastfetch':
+                appendTerminalFastfetch();
+                break;
+            case 'sudo':
+                appendTerminalLine("sudo: don't even think about it.", 'text-red-400');
+                break;
+            case 'python':
+                appendTerminalLine('ssssssssss... Python has entered the chat.', 'text-amber-300');
+                break;
+            case 'pacman':
+            case 'yay':
+                appendTerminalLine('No thank you. My packages are fine.', 'text-emerald-400');
+                break;
+            case 'cmd':
+            case 'terminal':
+                appendTerminalLine('You need more than one terminal?', 'text-neutral-300');
+                break;
+            case 'vim':
+                appendTerminalLine("That's what I'm saying: why do we need our mouses for coding? Right?", 'text-cyan-300');
+                break;
+            case 'ls':
+                appendTerminalLine('about/  skills/  experience/  projects/  contact/  definitely-not-secrets.txt', 'text-neutral-300');
+                break;
+            case 'cd':
+                appendTerminalLine('bash: cd: reality: No such file or directory', 'text-red-400');
+                break;
+            case 'git':
+            case 'git status':
+                appendTerminalLine('On branch main', 'text-neutral-300');
+                appendTerminalLine('Your portfolio is ahead of its impostor syndrome by 42 commits.', 'text-emerald-400');
+                break;
+            case 'npm':
+            case 'npm install':
+                appendTerminalLine('added 847 packages, audited 847 packages in 2.4s', 'text-neutral-300');
+                appendTerminalLine('found 0 vulnerabilities and 1 existential crisis.', 'text-amber-300');
+                break;
+            case 'docker':
+                appendTerminalLine('It works on my machine. Ship the machine.', 'text-cyan-300');
+                break;
+            case 'rm':
+            case 'rm -rf /':
+                appendTerminalLine('Nice try. This portfolio has backups.', 'text-red-400');
+                break;
+            case 'coffee':
+                appendTerminalLine('Brewing developer fuel... done. Now shipping.', 'text-amber-300');
                 break;
             case 'skills':
                 appendTerminalLine('Frontend: React, Next.js, TypeScript, Tailwind CSS, JavaScript ES6+', 'text-neutral-300');
@@ -224,6 +270,32 @@ document.addEventListener('DOMContentLoaded', () => {
         p.className = className;
         p.textContent = text;
         terminalOutput.appendChild(p);
+    }
+
+    function appendTerminalFastfetch() {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'grid grid-cols-[auto_1fr] gap-5 items-start text-[11px] leading-relaxed';
+
+        const art = document.createElement('pre');
+        art.className = 'text-emerald-400 font-bold leading-tight';
+        art.textContent = `    /\\_/\\
+   ( o.o )
+    > ^ <
+  portfolio`; 
+
+        const details = document.createElement('div');
+        details.className = 'text-neutral-300';
+        details.innerHTML = `
+            <p><span class="text-emerald-400">OS</span>        Portfolio Linux</p>
+            <p><span class="text-emerald-400">Host</span>      Alex Kovacs Portfolio</p>
+            <p><span class="text-emerald-400">Kernel</span>    HTML5 / CSS / JavaScript</p>
+            <p><span class="text-emerald-400">Uptime</span>    Since the first line of code</p>
+            <p><span class="text-emerald-400">Shell</span>     alex@portfolio:~$</p>
+            <p><span class="text-emerald-400">Theme</span>     Dark editorial / terminal</p>
+        `;
+
+        wrapper.append(art, details);
+        terminalOutput.appendChild(wrapper);
     }
 });
 
