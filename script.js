@@ -66,18 +66,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const contactDrawer = document.getElementById('contactDrawer');
-    const openDrawerBtn = document.getElementById('openContactDrawerBtn');
-    const quickContactBtn = document.getElementById('quickContactBtn');
     const closeDrawerBtn = document.getElementById('closeDrawerBtn');
     const contactTerminal = document.getElementById('contactTerminal');
     const terminalStatus = document.getElementById('terminalStatus');
     const terminalChoices = document.querySelectorAll('.terminal-choice');
 
     function openDrawer() {
+        if (!contactDrawer) return;
         contactDrawer.classList.remove('hidden');
         contactDrawer.classList.add('flex');
     }
     function closeDrawer() {
+        if (!contactDrawer) return;
         contactDrawer.classList.add('hidden');
         contactDrawer.classList.remove('flex');
     }
@@ -118,8 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 260);
     }
 
-    if (openDrawerBtn) openDrawerBtn.addEventListener('click', openDrawer);
-    if (quickContactBtn) quickContactBtn.addEventListener('click', openDrawer);
     if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
 
     terminalChoices.forEach((button) => {
@@ -137,15 +135,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionMap = {
             '1': 'mailto:alex.kovacs.dev@gmail.com',
             '2': 'https://linkedin.com',
-            '3': 'https://github.com',
-            '4': '#contact'
+            '3': 'https://github.com'
         };
 
         const labels = {
             '1': 'Mail',
             '2': 'LinkedIn',
-            '3': 'GitHub',
-            '4': 'Message Form'
+            '3': 'GitHub'
         };
 
         if (optionMap[key]) {
