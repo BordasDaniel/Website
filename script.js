@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const key = event.key;
         const optionMap = {
-            '1': 'mailto:alex.kovacs.dev@gmail.com',
+            '1': 'mailto:bordas.daniel0124@gmail.com',
             '2': 'https://linkedin.com',
             '3': 'https://github.com'
         };
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        alert('Thank you! Your message has been sent successfully. Alex will get back to you soon.');
+        alert('Thank you! Your message has been sent successfully. Dániel will get back to you soon.');
         contactForm.reset();
         closeDrawer();
     });
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         terminalInput.value = '';
 
         // Echo command
-        appendTerminalLine(`alex@portfolio:~$ ${cmd}`, 'text-amber-300');
+        appendTerminalLine(`daniel@portfolio:~$ ${cmd}`, 'text-amber-300');
 
         switch(cmd) {
             case 'help':
@@ -249,8 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
             case 'contact':
             case 'hire':
-                appendTerminalLine('Email: alex.kovacs.dev@gmail.com', 'text-emerald-400');
-                appendTerminalLine('Location: Budapest, Hungary (Open to Remote)', 'text-emerald-400');
+                appendTerminalLine('Email: bordas.daniel0124@gmail.com', 'text-emerald-400');
+                appendTerminalLine('Location: Miskolc, Hungary (Open to Remote)', 'text-emerald-400');
                 break;
             case 'clear':
                 terminalOutput.innerHTML = '';
@@ -287,10 +287,10 @@ document.addEventListener('DOMContentLoaded', () => {
         details.className = 'text-neutral-300';
         details.innerHTML = `
             <p><span class="text-emerald-400">OS</span>        Portfolio Linux</p>
-            <p><span class="text-emerald-400">Host</span>      Alex Kovacs Portfolio</p>
+            <p><span class="text-emerald-400">Host</span>      Daniel Bordas Portfolio</p>
             <p><span class="text-emerald-400">Kernel</span>    HTML5 / CSS / JavaScript</p>
             <p><span class="text-emerald-400">Uptime</span>    Since the first line of code</p>
-            <p><span class="text-emerald-400">Shell</span>     alex@portfolio:~$</p>
+            <p><span class="text-emerald-400">Shell</span>     daniel@portfolio:~$</p>
             <p><span class="text-emerald-400">Theme</span>     Dark editorial / terminal</p>
         `;
 
