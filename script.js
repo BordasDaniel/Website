@@ -4,6 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
+    // Sets availability indicator based on current time (8 AM - 8 PM)
+    const availableIndicator = document.getElementById('available');
+    if (availableIndicator) {
+        const currentHour = new Date().getHours();
+        if (currentHour >= 8 && currentHour < 20) {
+            availableIndicator.classList.add('bg-emerald-500');
+        } else {
+            availableIndicator.classList.add('bg-neutral-500');
+        }
+    }
+
     // Set current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
@@ -153,8 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const key = event.key;
         const optionMap = {
             '1': 'mailto:bordas.daniel0124@gmail.com',
-            '2': 'https://linkedin.com',
-            '3': 'https://github.com'
+            '2': 'https://www.linkedin.com/in/bordasdaniel0124/',
+            '3': 'https://github.com/BordasDaniel'
         };
 
         const labels = {
