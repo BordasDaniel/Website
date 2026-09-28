@@ -40,6 +40,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => observer.observe(section));
 
+    // Reveal each section once as it enters the viewport.
+    const revealObserver = new IntersectionObserver((entries, observerInstance) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add('is-revealed');
+            observerInstance.unobserve(entry.target);
+        });
+    }, {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.08
+    });
+
+    sections.forEach(section => {
+        section.classList.add('section-reveal');
+        revealObserver.observe(section);
+    });
+
     // Skills filter functionality
     const filterBtns = document.querySelectorAll('.skill-filter-btn');
     const skillItems = document.querySelectorAll('.skill-item');
