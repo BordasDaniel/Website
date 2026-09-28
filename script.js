@@ -188,15 +188,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (openTerminalBtn) {
         openTerminalBtn.addEventListener('click', () => {
-            terminalModal.classList.remove('hidden');
+            terminalModal.classList.remove('hidden', 'closing');
             terminalModal.classList.add('flex');
-            terminalInput.focus();
+            requestAnimationFrame(() => {
+                terminalModal.classList.add('is-visible');
+                terminalInput.focus();
+            });
         });
     }
 
     window.closeTerminal = function() {
-        terminalModal.classList.add('hidden');
-        terminalModal.classList.remove('flex');
+        if (terminalModal.classList.contains('closing')) return;
+
+        terminalModal.classList.remove('is-visible');
+        terminalModal.classList.add('closing');
+
+        setTimeout(() => {
+            terminalModal.classList.add('hidden');
+            terminalModal.classList.remove('flex', 'closing');
+        }, 460);
     };
 
     // CLI Commands Logic
