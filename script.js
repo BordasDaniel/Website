@@ -4,6 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
+    // Loads data.json (TODO: Implement data loading)
+    // Example:
+    // fetch('data.json')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         // Process the loaded data
+    //     });
+
     // Sets availability indicator based on current time (8 AM - 8 PM)
     const availableIndicator = document.getElementById('available');
     if (availableIndicator) {
@@ -181,15 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     showTerminal();
-
-    // Handle Contact Form Submit
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you! Your message has been sent successfully. Dániel will get back to you soon.');
-        contactForm.reset();
-        closeDrawer();
-    });
 
     const terminalModal = document.getElementById('terminalModal');
     const openTerminalBtn = document.getElementById('openTerminalBtn');
