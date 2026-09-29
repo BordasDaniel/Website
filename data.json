@@ -1,0 +1,211 @@
+{
+  "skills": {
+    "filters": [
+      {
+        "id": "all",
+        "label": "All Skills"
+      },
+      {
+        "id": "frontend",
+        "label": "Frontend"
+      },
+      {
+        "id": "backend",
+        "label": "Backend & DB"
+      },
+      {
+        "id": "tools",
+        "label": "Tools & Workflow"
+      }
+    ],
+    "items": [
+    {
+      "name": "React",
+      "category": "frontend",
+      "label": "FRONTEND"
+    },
+    {
+      "name": "TypeScript",
+      "category": "frontend",
+      "label": "LANGUAGE"
+    },
+    {
+      "name": "JavaScript (ES6+)",
+      "category": "frontend",
+      "label": "CORE"
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "frontend",
+      "label": "STYLING"
+    },
+    {
+      "name": "Node.js",
+      "category": "backend",
+      "label": "BACKEND"
+    },
+    {
+      "name": "ASP.NET Core",
+      "category": "backend",
+      "label": "BACKEND"
+    },
+    {
+      "name": "C#",
+      "category": "backend",
+      "label": "LANGUAGE"
+    },
+    {
+      "name": "RESTful APIs",
+      "category": "backend",
+      "label": "API"
+    },
+    {
+      "name": "SQL Databases",
+      "category": "backend",
+      "label": "DATABASE"
+    },
+    {
+      "name": "NoSQL Databases",
+      "category": "backend",
+      "label": "DATABASE"
+    },
+    {
+      "name": "Python",
+      "category": "tools",
+      "label": "LANGUAGE"
+    },
+    {
+      "name": "C",
+      "category": "tools",
+      "label": "LANGUAGE"
+    },
+    {
+      "name": "WPF & Desktop Apps",
+      "category": "tools",
+      "label": "DESKTOP"
+    },
+    {
+      "name": "Docker",
+      "category": "tools",
+      "label": "DEVOPS"
+    },
+    {
+      "name": "Render",
+      "category": "tools",
+      "label": "DEPLOYMENT"
+    },
+    {
+      "name": "Vite & Build Tools",
+      "category": "tools",
+      "label": "BUILD"
+    },
+    {
+      "name": "Git & Version Control",
+      "category": "tools",
+      "label": "WORKFLOW"
+    },
+    {
+      "name": "Linux & Shell Scripting",
+      "category": "tools",
+      "label": "OS"
+    },
+    {
+      "name": "Figma & UI Design",
+      "category": "tools",
+      "label": "DESIGN"
+    }
+  ]
+  },
+  "workExperience": [
+    {
+      "position": "Junior Developer (Formula Student Team Member)",
+      "company": "Electric Racing Miskolc",
+      "location": "Miskolc, Hungary",
+      "period": "2026 — PRESENT",
+      "description": "Assiting in the development of software solutions for ERM in Formula Student competitions.",
+      "technologies": [
+        "TBA"
+      ]
+    },
+    {
+      "position": "Software Developer Intern",
+      "company": "We Plus S.p.A. ",
+      "location": "Turin, Italy",
+      "period": "2026.10 — 2026.10",
+      "description": "Assisted in the development of a desktop application for internal use, focusing on user interface design and database integration.",
+      "technologies": [
+        "Python",
+        "Tkinter",
+        "C#",
+        "SQL"
+      ]
+    },
+    {
+      "position": "B.Sc. Computer Science",
+      "company": "University of Miskolc",
+      "location": "Miskolc, Hungary",
+      "period": "2026 — PRESENT",
+      "description": "Currently pursuing a Bachelor's degree in Computer Science, with a focus on software development, algorithms, and data structures.",
+      "technologies": [
+        "Databases",
+        "Scripting",
+        "OOP Programming",
+        "Web Development",
+        "Desktop Development",
+        "Version Control"
+      ]
+    },
+     {
+      "position": "Junior Programmer (student)",
+      "company": "Kálmán Kandó Informatics Technical School",
+      "location": "Miskolc, Hungary",
+      "period": "2021 — 2026",
+      "description": "Completed a comprehensive program in computer science, covering various programming languages, software development methodologies, and practical projects.",
+      "technologies": [
+        "Databases",
+        "Scripting",
+        "OOP Programming",
+        "Static/Dynamic Web Development",
+        "Desktop Development",
+        "Version Control"
+      ]
+    }
+  ],
+  "selectedProjects": [
+    {
+      "number": 1,
+      "type": "FULLSTACK",
+      "status": "LIVE DEMO AVAILABLE",
+      "name": "Könyvkocka",
+      "description": "A dynamic web application for film enthusiasts to explore, review, and discuss movies. It features a sleek interface built with React and TypeScript, and leverages API for fetching movie data.",
+      "visualLabel": "Könyvkocka Web Interface",
+      "technologies": [
+        "React",
+        "TypeScript",
+        "C# & ASP.NET Core",
+        "MySQL",
+        "Render"
+      ],
+      "details": "DevPulse is an all-in-one developer workspace designed to streamline daily tasks. Built with React and TypeScript, it integrates directly with GitHub REST API to pull user activity, track project milestones, and chart productivity trends using Recharts.",
+      "githubUrl": "https://github.com/BordasDaniel/Konyvkocka",
+      "liveUrl": "https://konyvkocka.onrender.com/"
+    },
+    {
+      "number": 2,
+      "type": "DATA ANALYTICS",
+      "status": "SOURCE CODE AVAILABLE",
+      "name": "HW Asset & Login Relational Exporter",
+      "description": "Desktop application that parses raw hardware log files (hw.txt), maps flat data into a relational schema, provides a paginated Tkinter GUI with search & date filtering, and exports multi-sheet Excel workbooks.",
+      "visualLabel": "HW Filter Desktop Interface",
+      "technologies": [
+          "Python",
+          "Tkinter",
+          "openpyxl",
+          "Data Modeling"
+      ],
+      "details": "This desktop application is designed to process and analyze hardware log files. It reads raw data from hw.txt, transforms it into a structured relational format, and presents it in a user-friendly Tkinter interface. Users can filter results by date and search for specific entries, and the application can export the processed data into multi-sheet Excel workbooks for further analysis.",
+      "githubUrl": "https://github.com/BordasDaniel/HWFilter",
+      "liveUrl": null
+    }
+  ]
+}
