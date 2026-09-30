@@ -5,12 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Loads data.json (TODO: Implement data loading)
-    // Example:
-    // fetch('data.json')
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         // Process the loaded data
-    //     });
+    const payload = fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Data loaded:', data);
+        })
+        .catch(error => {
+            console.error('Error loading data.json:', error);
+        });
+    
+
 
     // Sets availability indicator based on current time (8 AM - 8 PM)
     const availableIndicator = document.getElementById('available');

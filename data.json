@@ -128,19 +128,6 @@
       ]
     },
     {
-      "position": "Software Developer Intern",
-      "company": "We Plus S.p.A. ",
-      "location": "Turin, Italy",
-      "period": "2026.10 — 2026.10",
-      "description": "Assisted in the development of a desktop application for internal use, focusing on user interface design and database integration.",
-      "technologies": [
-        "Python",
-        "Tkinter",
-        "C#",
-        "SQL"
-      ]
-    },
-    {
       "position": "B.Sc. Computer Science",
       "company": "University of Miskolc",
       "location": "Miskolc, Hungary",
@@ -155,7 +142,20 @@
         "Version Control"
       ]
     },
-     {
+    {
+      "position": "Software Developer Intern",
+      "company": "We Plus S.p.A. ",
+      "location": "Turin, Italy",
+      "period": "2026.10 — 2026.10",
+      "description": "Assisted in the development of a desktop application for internal use, focusing on user interface design and database integration.",
+      "technologies": [
+        "Python",
+        "Tkinter",
+        "C#",
+        "SQL"
+      ]
+    },
+    {
       "position": "Junior Programmer (student)",
       "company": "Kálmán Kandó Informatics Technical School",
       "location": "Miskolc, Hungary",
