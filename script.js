@@ -4,6 +4,35 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+
+            if (isOpen) {
+                mobileMenu.classList.remove('mobile-menu-open');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                window.setTimeout(() => mobileMenu.classList.add('hidden'), 320);
+                return;
+            }
+
+            mobileMenu.classList.remove('hidden');
+            mobileMenuToggle.setAttribute('aria-expanded', 'true');
+            requestAnimationFrame(() => mobileMenu.classList.add('mobile-menu-open'));
+        });
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('mobile-menu-open');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                window.setTimeout(() => mobileMenu.classList.add('hidden'), 320);
+            });
+        });
+    }
+
     // Loads the content data without changing the page's existing visual structure.
     fetch('data.json')
         .then(response => {

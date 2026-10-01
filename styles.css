@@ -75,6 +75,20 @@ body {
     animation: skillFilterEnter 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+#mobileMenu {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-8px);
+    transition: max-height 320ms ease, opacity 260ms ease, transform 320ms ease;
+}
+
+#mobileMenu.mobile-menu-open {
+    max-height: 320px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .section-reveal,
     .section-reveal.is-revealed {
@@ -85,6 +99,10 @@ body {
 
     .skill-filter-enter {
         animation: none;
+    }
+
+    #mobileMenu {
+        transition: none;
     }
 }
 
