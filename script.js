@@ -93,9 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button class="project-details-btn text-white hover:underline flex items-center gap-1" data-project-number="${project.number}">
                             Details &amp; Architecture <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                         </button>
-                        <a href="${project.githubUrl}" target="_blank" rel="noopener" class="text-neutral-500 hover:text-white flex items-center gap-1">
-                            Code <i data-lucide="github" class="w-3.5 h-3.5"></i>
-                        </a>
+                        <div class="flex items-center gap-4">
+                            <a href="${project.githubUrl}" target="_blank" rel="noopener" class="text-neutral-500 hover:text-white flex items-center gap-1">
+                                Code <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                            </a>
+                            ${project.liveUrl
+                                ? `<a href="${project.liveUrl}" target="_blank" rel="noopener" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">Live Demo <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>`
+                                : `<button type="button" disabled aria-disabled="true" class="text-emerald-400/60 cursor-not-allowed flex items-center gap-1">Live Demo <i data-lucide="external-link" class="w-3.5 h-3.5"></i></button>`}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -482,13 +487,21 @@ function openProjectModal(title, desc, stackArray, githubUrl, liveUrl) {
         stackContainer.appendChild(badge);
     });
 
-    document.getElementById('modalGithubLink').href = githubUrl || '#';
-    modal.classList.remove('hidden');
+    modal.classList.remove('hidden', 'closing');
     modal.classList.add('flex');
+
+    requestAnimationFrame(() => modal.classList.add('is-visible'));
 }
 
 function closeProjectModal() {
     const modal = document.getElementById('projectModal');
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
+    if (modal.classList.contains('closing')) return;
+
+    modal.classList.remove('is-visible');
+    modal.classList.add('closing');
+
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex', 'closing');
+    }, 460);
 }

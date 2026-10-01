@@ -481,7 +481,7 @@
 
     <!-- 3. PROJECT DETAIL MODAL -->
     <div id="projectModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
-        <div class="bg-neutral-950 border border-neutral-800 rounded-lg w-full max-w-xl p-8 space-y-6 relative">
+        <div class="project-modal-panel bg-neutral-950 border border-neutral-800 rounded-lg w-full max-w-xl p-8 space-y-6 relative">
             <button onclick="closeProjectModal()" class="absolute top-6 right-6 text-neutral-500 hover:text-white">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
@@ -494,10 +494,7 @@
                 <div id="modalProjectStack" class="flex flex-wrap gap-2"></div>
             </div>
 
-            <div class="pt-4 border-t border-neutral-900 flex justify-between items-center">
-                <a id="modalGithubLink" href="#" target="_blank" class="px-4 py-2 border border-neutral-800 rounded font-mono text-xs text-neutral-300 hover:text-white hover:border-neutral-600 flex items-center gap-2">
-                    <i data-lucide="github" class="w-4 h-4"></i> Repository
-                </a>
+            <div class="pt-4 border-t border-neutral-900 flex justify-center items-center">
                 <button onclick="closeProjectModal()" class="px-4 py-2 bg-white text-black rounded font-mono text-xs uppercase tracking-wider">
                     Close Overview
                 </button>
