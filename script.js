@@ -31,8 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="skill-filter-btn ${index === 0 ? 'active bg-white text-black font-semibold' : 'border border-neutral-800 text-neutral-400 hover:text-white'} px-4 py-2 rounded" data-filter="${filter.id}">${filter.label}</button>
         `).join('');
 
-        const midpoint = Math.ceil(skills.items.length / 2);
-        const columns = [skills.items.slice(0, midpoint), skills.items.slice(midpoint)];
+        const columns = [[], []];
+        skills.items.forEach((skill, index) => {
+            columns[index % 2].push(skill);
+        });
         skillsGrid.innerHTML = columns.map(items => `
             <div class="divide-y divide-neutral-900 border-t border-b border-neutral-900">
                 ${items.map(skill => `
@@ -117,8 +119,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const category = btn.getAttribute('data-filter');
                 skillItems.forEach(item => {
-                    item.style.display = category === 'all' || item.getAttribute('data-category') === category ? 'flex' : 'none';
+                    const isVisible = category === 'all' || item.getAttribute('data-category') === category;
+                    item.classList.remove('skill-filter-enter');
+                    item.style.display = isVisible ? 'flex' : 'none';
+
+                    if (isVisible) {
+                        requestAnimationFrame(() => item.classList.add('skill-filter-enter'));
+                    }
                 });
+
+                window.setTimeout(() => {
+                    skillItems.forEach(item => item.classList.remove('skill-filter-enter'));
+                }, 1040);
             });
         });
     }
@@ -128,7 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', () => {
                 const project = window.portfolioProjects.find(item => String(item.number) === button.dataset.projectNumber);
                 if (!project) return;
-                openProjectModal(project.name, project.details, project.detailsTechnologies, project.githubUrl, project.liveUrl);
+                openProjectModal(
+                    project.name,
+                    project.details || project.description,
+                    project.detailsTechnologies || project.technologies,
+                    project.githubUrl,
+                    project.liveUrl
+                );
             });
         });
     }
@@ -198,31 +216,6 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
         section.classList.add('section-reveal');
         revealObserver.observe(section);
-    });
-
-    // Skills filter functionality
-    const filterBtns = document.querySelectorAll('.skill-filter-btn');
-    const skillItems = document.querySelectorAll('.skill-item');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => {
-                b.classList.remove('bg-white', 'text-black', 'font-semibold');
-                b.classList.add('border', 'border-neutral-800', 'text-neutral-400');
-            });
-            btn.classList.add('bg-white', 'text-black', 'font-semibold');
-            btn.classList.remove('border', 'border-neutral-800', 'text-neutral-400');
-
-            const category = btn.getAttribute('data-filter');
-
-            skillItems.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
     });
 
     const contactDrawer = document.getElementById('contactDrawer');
