@@ -4,16 +4,134 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
-    // Loads data.json (TODO: Implement data loading)
-    const payload = fetch('data.json')
-        .then(response => response.json())
+    // Loads the content data without changing the page's existing visual structure.
+    fetch('data.json')
+        .then(response => {
+            if (!response.ok) throw new Error(`Could not load data.json (${response.status})`);
+            return response.json();
+        })
         .then(data => {
-            console.log('Data loaded:', data);
+            window.portfolioProjects = data.selectedProjects;
+            renderSkills(data.skills);
+            renderWorkExperience(data.workExperience);
+            renderProjects(data.selectedProjects);
+            setupSkillFilters();
+            setupProjectButtons();
         })
         .catch(error => {
-            console.error('Error loading data.json:', error);
+            console.error('Error loading portfolio data:', error);
         });
-    
+
+    function renderSkills(skills) {
+        const skillsSection = document.getElementById('skills');
+        const filterContainer = skillsSection.querySelector('.flex.flex-wrap.gap-2.mb-10');
+        const skillsGrid = skillsSection.querySelector('.grid.grid-cols-1.md\\:grid-cols-2');
+
+        filterContainer.innerHTML = skills.filters.map((filter, index) => `
+            <button class="skill-filter-btn ${index === 0 ? 'active bg-white text-black font-semibold' : 'border border-neutral-800 text-neutral-400 hover:text-white'} px-4 py-2 rounded" data-filter="${filter.id}">${filter.label}</button>
+        `).join('');
+
+        const midpoint = Math.ceil(skills.items.length / 2);
+        const columns = [skills.items.slice(0, midpoint), skills.items.slice(midpoint)];
+        skillsGrid.innerHTML = columns.map(items => `
+            <div class="divide-y divide-neutral-900 border-t border-b border-neutral-900">
+                ${items.map(skill => `
+                    <div class="skill-item py-6 flex justify-between items-center group" data-category="${skill.category}">
+                        <span class="text-neutral-200 group-hover:text-white group-hover:translate-x-1 transition-all">${skill.name}</span>
+                        <span class="font-mono text-xs text-neutral-500 group-hover:text-neutral-300">${skill.label}</span>
+                    </div>
+                `).join('')}
+            </div>
+        `).join('');
+    }
+
+    function renderWorkExperience(entries) {
+        const experienceGrid = document.querySelector('#experience .space-y-16');
+        experienceGrid.innerHTML = entries.map(entry => `
+            <div class="pt-8 border-t border-neutral-900 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-5">
+                    <h3 class="text-2xl md:text-3xl font-medium text-white mb-2">${entry.position}</h3>
+                    <p class="text-neutral-400 text-sm mb-1">${entry.company}</p>
+                    <p class="text-neutral-500 font-mono text-xs">${entry.location}</p>
+                </div>
+                <div class="lg:col-span-3 font-mono text-xs text-neutral-400 tracking-wider">${entry.period}</div>
+                <div class="lg:col-span-4 space-y-4">
+                    <p class="text-neutral-300 text-sm leading-relaxed font-light">${entry.description}</p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        ${entry.technologies.map(technology => `<span class="px-3 py-1 rounded-full border border-neutral-800 text-[11px] font-mono text-neutral-400 bg-neutral-950">${technology}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderProjects(projects) {
+        const projectsGrid = document.querySelector('#projects .grid.grid-cols-1.md\\:grid-cols-2');
+        projectsGrid.innerHTML = projects.map(project => `
+            <div class="group relative rounded border border-neutral-800 bg-neutral-950 overflow-hidden flex flex-col justify-between p-6 hover:border-neutral-600 transition-all">
+                <div>
+                    <div class="flex justify-between items-center font-mono text-xs text-neutral-500 mb-6">
+                        <span>${String(project.number).padStart(2, '0')} // ${project.type}</span>
+                        <span class="${project.number === 1 ? 'text-emerald-400' : 'text-neutral-400'}">${project.status}</span>
+                    </div>
+                    <h3 class="font-display text-4xl text-white uppercase mb-3 group-hover:text-neutral-200">${project.name}</h3>
+                    <p class="text-neutral-400 text-sm mb-6 leading-relaxed font-light">${project.description}</p>
+                </div>
+                <div>
+                    <div class="w-full h-48 rounded bg-neutral-900 border border-neutral-800/80 mb-6 flex items-center justify-center p-4 overflow-hidden relative group-hover:border-neutral-700 transition-colors">
+                        <div class="font-mono text-xs text-neutral-500 text-center">
+                            <i data-lucide="${project.number === 1 ? 'layout-dashboard' : 'code-2'}" class="w-10 h-10 mx-auto mb-2 text-neutral-600 group-hover:text-white transition-colors"></i>
+                            <span>[ ${project.visualLabel} ]</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-6 font-mono text-[11px] text-neutral-400">
+                        ${project.technologies.map(technology => `<span class="px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800">${technology}</span>`).join('')}
+                    </div>
+                    <div class="flex items-center justify-between border-t border-neutral-900 pt-4 font-mono text-xs">
+                        <button class="project-details-btn text-white hover:underline flex items-center gap-1" data-project-number="${project.number}">
+                            Details &amp; Architecture <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <a href="${project.githubUrl}" target="_blank" rel="noopener" class="text-neutral-500 hover:text-white flex items-center gap-1">
+                            Code <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        if (window.lucide) lucide.createIcons();
+    }
+
+    function setupSkillFilters() {
+        const filterBtns = document.querySelectorAll('.skill-filter-btn');
+        const skillItems = document.querySelectorAll('.skill-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(filterButton => {
+                    filterButton.classList.remove('bg-white', 'text-black', 'font-semibold');
+                    filterButton.classList.add('border', 'border-neutral-800', 'text-neutral-400');
+                });
+                btn.classList.add('bg-white', 'text-black', 'font-semibold');
+                btn.classList.remove('border', 'border-neutral-800', 'text-neutral-400');
+
+                const category = btn.getAttribute('data-filter');
+                skillItems.forEach(item => {
+                    item.style.display = category === 'all' || item.getAttribute('data-category') === category ? 'flex' : 'none';
+                });
+            });
+        });
+    }
+
+    function setupProjectButtons() {
+        document.querySelectorAll('.project-details-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const project = window.portfolioProjects.find(item => String(item.number) === button.dataset.projectNumber);
+                if (!project) return;
+                openProjectModal(project.name, project.details, project.detailsTechnologies, project.githubUrl, project.liveUrl);
+            });
+        });
+    }
 
 
     // Sets availability indicator based on current time (8 AM - 8 PM)
