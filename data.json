@@ -122,9 +122,10 @@
       "company": "Electric Racing Miskolc",
       "location": "Miskolc, Hungary",
       "period": "2026 — PRESENT",
-      "description": "Assiting in the development of software solutions for ERM in Formula Student competitions.",
+      "description": "Assiting in the development of software solutions for ERM in Formula Student competitions with a focus on embedded systems, data acquisition, and telemetry.",
       "technologies": [
-        "TBA"
+        "Embedded Systems",
+        "C"
       ]
     },
     {
