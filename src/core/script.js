@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Loads the content data without changing the page's existing visual structure.
-    fetch('data.json')
+    fetch('src/core/data.json')
         .then(response => {
             if (!response.ok) throw new Error(`Could not load data.json (${response.status})`);
             return response.json();
@@ -495,7 +495,7 @@ function showSkillDetail(title, desc) {
 
     setTimeout(() => {
         toast.classList.add('hidden');
-    }, 5000);
+    }, 5000);script.js
 }
 
 function closeSkillToast() {

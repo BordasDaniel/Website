@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="src/img/favicon.svg" type="image/svg+xml">
     <title>Dániel Bordás</title>
     
     <!-- Tailwind CSS -->
@@ -16,7 +16,7 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="src/core/styles.css">
 </head>
 <body class="bg-[#070707] text-neutral-200 font-sans selection:bg-white selection:text-black antialiased relative min-h-screen overflow-x-hidden">
 
@@ -175,7 +175,7 @@
                 <div class="md:col-span-5 relative group">
                     <div class="overflow-hidden rounded border border-neutral-800 bg-neutral-900">
                         <img 
-                            src="https://scontent.fbud4-1.fna.fbcdn.net/v/t39.30808-6/508714565_2137127290097675_7698248066111891535_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=zpY6sqTLfhcQ7kNvwFQ_AAK&_nc_oc=AdoEJYq3qSOW4nTQP0WZ3S6TELzxzfKu6OnMS2uyRnigmxofy5Dcnwkqdwt0XZGo8Bu0jtOriQ1z_oVRA9smtLuR&_nc_zt=23&_nc_ht=scontent.fbud4-1.fna&_nc_gid=piCqUx4kgalxeubV8TLXaQ&_nc_ss=7b2a8&oh=00_AQLI6S-2pe9Wpe8A_szXzsBoixzglCq1heJfKKhxf6IcOw&oe=6ABF5C8E" 
+                            src="src/img/pfp.jpg" 
                             alt="Dániel Bordás Portrait"
                             class="w-full h-[520px] object-cover filter grayscale contrast-125 opacity-60 group-hover:scale-105 transition-transform duration-700"
                             onerror="this.src='https://placehold.co/600x800/18181b/ffffff?text=Daniel+Bordas'"
@@ -221,7 +221,7 @@
             <div class="space-y-10">
                 <div class="education-card rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 items-center">
                     <div class="md:col-span-5 p-0">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="High school classroom" class="education-image w-full">
+                        <img src="/src/img/school.jpg" alt="High school classroom" class="education-image w-full">
                     </div>
                     <div class="md:col-span-7 p-8 md:p-10 space-y-5">
                         <div class="font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-500">Miskolci SZC Kálmán Kandó Informatics Technical School // 2021 - 2026</div>
@@ -251,7 +251,7 @@
                         </div>
                     </div>
                     <div class="md:col-span-5 order-1 md:order-2 p-0">
-                        <img src="https://www.uni-miskolc.hu/wp-content/uploads/2026/01/53880053281_2f49634204_o.webp" alt="University campus" class="education-image w-full">
+                        <img src="src/img/uni.jpg" alt="University campus" class="education-image w-full">
                     </div>
                 </div>
             </div>
@@ -529,6 +529,6 @@
         </div>
     </div>
 
-    <script src="script.js" defer></script>
+    <script src="src/core/script.js" defer></script>
 </body>
 </html>
